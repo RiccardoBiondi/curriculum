@@ -1,0 +1,10 @@
+# Ignore the signature imaage
+
+# Ignore the build files
+
+*aux
+*fdb_latexmk
+*fls
+*out
+*log
+*synctex.gz
