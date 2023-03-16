@@ -23,60 +23,61 @@
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
-\documentclass[1pt,a4paper,verdana]{moderncv} % Font sizes: 10, 11, or 12; paper sizes: a4paper, letterpaper, a5paper, legalpaper, executivepaper or landscape; font families: sans or roman
+\documentclass[12pt,a4paper]{moderncv} % Font sizes: 10, 11, or 12; paper sizes: a4paper, letterpaper, a5paper, legalpaper, executivepaper or landscape; font families: sans or roman
 
+\usepackage{iflang} % to select the language build
+\usepackage[scale=0.90]{geometry} % Reduce document margins
+\usepackage[T1]{fontenc}
+%\usepackage[utf8]{inputenc}
+
+\usepackage[italian]{babel}
 
 
 \moderncvstyle{classic} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
 \moderncvcolor{black} % CV color - options include: 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
 
 
-\usepackage[scale=0.75]{geometry} % Reduce document margins
-%\setlength{\hintscolumnwidth}{3cm} % Uncomment to change the width of the dates column
-%\setlength{\makecvtitlenamewidth}{10cm} % For the 'classic' style, uncomment to adjust the width of the space allocated to your name
+
+\setlength{\hintscolumnwidth}{4cm} % Uncomment to change the width of the dates column
+\setlength{\makecvtitlenamewidth}{10cm} % For the 'classic' style, uncomment to adjust the width of the space allocated to your name
 
 %----------------------------------------------------------------------------------------
 %	NAME AND CONTACT INFORMATION SECTION
 %----------------------------------------------------------------------------------------
 
 \firstname{Riccardo}
-\familyname{Biondi}
-
-% All information in this block is optional, comment out any lines you don't need
-
-\newcommand{\cvdoublecolumn}[2]{%
-  \cvitem[0.75em]{}{%
-    \begin{minipage}[t]{\listdoubleitemmaincolumnwidth}#1\end{minipage}%
-    \hfill%
-    \begin{minipage}[t]{\listdoubleitemmaincolumnwidth}#2\end{minipage}%
-    }%
-}
+\lastname{Biondi}
 
 
-\newcommand{\cvreference}[7]{%
-    \textbf{#1}\newline% Name
-    \ifthenelse{\equal{#2}{}}{}{\addresssymbol~#2\newline}%
-    \ifthenelse{\equal{#3}{}}{}{#3\newline}%
-    \ifthenelse{\equal{#4}{}}{}{#4\newline}%
-    \ifthenelse{\equal{#5}{}}{}{#5\newline}%
-    \ifthenelse{\equal{#6}{}}{}{\emailsymbol~\texttt{#6}\newline}%
-    \ifthenelse{\equal{#7}{}}{}{\phonesymbol~#7}}
+%\newcommand{\cvreference}[7]{%
+%    \textbf{#1}\newline% Name
+%    \ifthenelse{\equal{#2}{}}{}{\addresssymbol~#2\newline}%
+%    \ifthenelse{\equal{#3}{}}{}{#3\newline}%
+%    \ifthenelse{\equal{#4}{}}{}{#4\newline}%
+%    \ifthenelse{\equal{#5}{}}{}{#5\newline}%
+%    \ifthenelse{\equal{#6}{}}{}{\emailsymbol~\texttt{#6}\newline}%
+%    \ifthenelse{\equal{#7}{}}{}{\phonesymbol~#7}}
 
 
 \title{Curriculum Vitae ac Studiorum}
-% \address{}{Amar Ekushey Hall, University of Dhaka, Dhaka - 1000}
+\address{}{Via Massarenti 28, Bologna(BO), 40138, Italia}
 \mobile{$+39 348 9876702$}
-\email{riccardo.biondi7@unibo.it}{biondi.ric@gmail.com}
-% \homepage{bd.linkedin.com/pub/mainuddin-talukdar/93/1b4/a13/} {bd.linkedin.com/pub/mainuddin-talukdar/93/1b4/a13/}% The first argument is the url for the clickable link, the second argument is the url displayed in the template - this allows special characters to be displayed such as the tilde in this example
-%\extrainfo{additional information}
-% \photo[70pt][0.4pt]{picture} % The first bracket is the picture height, the second is the thickness of the frame around the picture (0pt for no frame)
-%\quote{"A witty and playful quotation" - John Smith}
+\email{riccardo.biondi7@unibo.it}
+
 
 %----------------------------------------------------------------------------------------
 
 \begin{document}
-
-    \makecvtitle % Print the CV title
+    % chose the language to use for the curriculum
+  %\ifdefined\eng
+  %  \selectlanguage{english}
+  %\else
+  %  \selectlanguage{italian}
+  %\fi
+  
+  \makecvtitle % Print the CV title
+  
+  %\input{sections/instruction.tex}
 
     
 \end{document}
