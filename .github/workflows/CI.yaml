@@ -30,4 +30,4 @@ jobs:
         sudo apt-get install -y latexmk texlive texlive-full inkscape wget curl sed grep
     - name: Build with Make
       run: |
-        make
+        make all
