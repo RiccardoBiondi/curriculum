@@ -38,7 +38,7 @@
 
 
 
-\setlength{\hintscolumnwidth}{4cm} % Uncomment to change the width of the dates column
+\setlength{\hintscolumnwidth}{5cm} % Uncomment to change the width of the dates column
 \setlength{\makecvtitlenamewidth}{10cm} % For the 'classic' style, uncomment to adjust the width of the space allocated to your name
 
 %----------------------------------------------------------------------------------------
@@ -69,15 +69,18 @@
 
 \begin{document}
     % chose the language to use for the curriculum
-  %\ifdefined\eng
-  %  \selectlanguage{english}
-  %\else
-  %  \selectlanguage{italian}
-  %\fi
+  \ifdefined\eng
+    \selectlanguage{english}
+  \else
+    \selectlanguage{italian}
+  \fi
   
   \makecvtitle % Print the CV title
+
+  \input{./sections/education.tex}
+
+  \input{./sections/work.tex}
   
-  %\input{sections/instruction.tex}
 
     
 \end{document}
