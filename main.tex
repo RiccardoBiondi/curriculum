@@ -28,10 +28,12 @@
 \usepackage{iflang} % to select the language build
 \usepackage[scale=0.90]{geometry} % Reduce document margins
 \usepackage[T1]{fontenc}
-%\usepackage[utf8]{inputenc}
-
-\usepackage[italian]{babel}
-
+\usepackage[utf8]{inputenc}
+\ifdefined\eng
+  \usepackage[english]{babel}
+\else
+  \usepackage[italian]{babel}
+\fi
 
 \moderncvstyle{classic} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
 \moderncvcolor{black} % CV color - options include: 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
@@ -93,6 +95,8 @@
 
   \input{./sections/freetime.tex}
 
+  \input{./sections/publications.tex}
+  
 
 
   \vspace*{\fill}

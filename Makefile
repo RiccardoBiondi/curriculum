@@ -5,14 +5,17 @@ output_name_eng = cv_eng
 
 
 ita:
-	latexmk -g -synctex=1 -interaction=nonstopmode -file-line-error -pdf $(filename) -jobname=$(output_name_ita) -pdflatex="lualatex --file-line-error --shell-escape --synctex=1"
+	python script/get_publication_list.py
+	latexmk -g -synctex=1 -bibtex -interaction=nonstopmode -file-line-error -pdf $(filename) -jobname=$(output_name_ita) -pdflatex="lualatex --file-line-error --shell-escape --synctex=1 -bibtex"
 
 eng:
-	latexmk -g -synctex=1 -interaction=nonstopmode -file-line-error -pdf $(filename) -jobname=$(output_name_eng) -pdflatex="/usr/bin/pdflatex --file-line-error --shell-escape --synctex=1 %O '\def\eng{1}\input{$(filename)}'"
+	python script/get_publication_list.py
+	latexmk -g -synctex=1 -bibtex -interaction=nonstopmode -file-line-error -pdf $(filename) -jobname=$(output_name_eng) -pdflatex="lualatex --file-line-error --shell-escape --synctex=1 %O '\def\eng{1}\input{$(filename)}'"
 
 all:
-	latexmk -g -synctex=1 -interaction=nonstopmode -file-line-error -pdf $(filename) -jobname=$(output_name_ita) -pdflatex="lualatex --file-line-error --shell-escape --synctex=1"
-	latexmk -g -synctex=1 -interaction=nonstopmode -file-line-error -pdf $(filename) -jobname=$(output_name_eng) -pdflatex="/usr/bin/pdflatex --file-line-error --shell-escape --synctex=1 %O '\def\eng{1}\input{$(filename)}'"
+	python script/get_publication_list.py
+	latexmk -g -synctex=1 -bibtex -interaction=nonstopmode -file-line-error -pdf $(filename) -jobname=$(output_name_ita) -pdflatex="lualatex --file-line-error --shell-escape --synctex=1"
+	latexmk -g -synctex=1 -bibtex -interaction=nonstopmode -file-line-error -pdf $(filename) -jobname=$(output_name_eng) -pdflatex="lualatex --file-line-error --shell-escape --synctex=1 %O '\def\eng{1}\input{$(filename)}'"
 
 
 .PHONY: clean
