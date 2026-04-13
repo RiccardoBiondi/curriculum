@@ -4,10 +4,11 @@
 from habanero import Crossref
 from scholarly import scholarly
 from abc import ABC, abstractmethod
-from typing import NoReturn, List, Tuple, Dict, Optional, IO, Any
+from typing import List, Tuple, Dict, Optional, IO, Any
+import requests
 
-AUTHOR_NAME = 'Riccardo'
-AUTHOR_SURNAME = 'Biondi'
+AUTHOR_NAME = "Riccardo"#'Riccardo'
+AUTHOR_SURNAME = "Biondi"#'Biondi'
 AUTHOR_SCHOLAR_ID = 'EfruuU4AAAAJ'
 OUTPUT_FILENAME = 'my_publication_list.bib'
 OPTIONAL_FIELDS = ['ISSN', 'publisher', 'page', 'volume', 'url']
@@ -44,8 +45,12 @@ class UserGoogleScholarPublicationList:
     def query(self) -> None:
         '''
         '''
-        search_query = scholarly.search_author(' '.join((self.author_name, self.author_surname)))
+        print(' '.join((self.author_name, self.author_surname)))
+        #search_query = scholarly.search_author(' '.join((self.author_name, self.author_surname)))
+        search_query = scholarly.search_author(self.author_surname)
+        print(search_query)
         author = next(search_query)
+
         if self.author_id is not None:
             count = 0 # counter to avoid infinite loop
             while (self.author_id != author['scholar_id']) & (count < 100):
@@ -135,6 +140,7 @@ class WriteBibtexFromDict:
         mandatory_str = f'{doi},\n author={{{authors}}},\n title={{{title}}},\n journal={{{journal}}},\n doi={{{doi}}},\n'
         
         return mandatory_str
+
     def _make_optional_fields_str(self) -> str:
         '''
         '''
@@ -170,7 +176,22 @@ class WriteBibtexFromDict:
         _ = output_stream.write(self._make_date_str())
         _ = output_stream.write('\n}\n\n')
 
+def is_connected():
+    try:
+        # Tenta di connettersi a un servizio affidabile
+        requests.get("https://www.google.com", timeout=3)
+        return True
+    except requests.ConnectionError:
+        return False
+
+
 def main() -> None:
+
+
+    #Check the connection
+    if not is_connected():
+        raise ConnectionError("No connection available")
+
 
     # Retrieve the author specific publication titles from google scholar
     me = UserGoogleScholarPublicationList(AUTHOR_NAME, AUTHOR_SURNAME, AUTHOR_SCHOLAR_ID)

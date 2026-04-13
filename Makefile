@@ -5,15 +5,13 @@ output_name_eng = cv_eng
 
 
 ita:
-	python script/get_publication_list.py
 	latexmk -g -synctex=1 -bibtex -interaction=nonstopmode -file-line-error -pdf $(filename) -jobname=$(output_name_ita) -pdflatex="lualatex --file-line-error --shell-escape --synctex=1 -bibtex"
 
 eng:
-	python script/get_publication_list.py
 	latexmk -g -synctex=1 -bibtex -interaction=nonstopmode -file-line-error -pdf $(filename) -jobname=$(output_name_eng) -pdflatex="lualatex --file-line-error --shell-escape --synctex=1 %O '\def\eng{1}\input{$(filename)}'"
 
 all:
-	python script/get_publication_list.py
+	#python script/get_publication_list.py
 	latexmk -g -synctex=1 -bibtex -interaction=nonstopmode -file-line-error -pdf $(filename) -jobname=$(output_name_ita) -pdflatex="lualatex --file-line-error --shell-escape --synctex=1"
 	latexmk -g -synctex=1 -bibtex -interaction=nonstopmode -file-line-error -pdf $(filename) -jobname=$(output_name_eng) -pdflatex="lualatex --file-line-error --shell-escape --synctex=1 %O '\def\eng{1}\input{$(filename)}'"
 

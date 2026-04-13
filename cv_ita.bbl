@@ -1,0 +1,111 @@
+\begin{thebibliography}{10}
+
+\bibitem{aldieri_development_2024}
+Alessandra Aldieri, \textbf{Biondi, Riccardo}, Antonino~A. La~Mattina, Julia~A.
+  Szyszko, Stefano Polizzi, Daniele Dall’Olio, Nico Curti, Gastone
+  Castellani, and Marco Viceconti.
+\newblock Development and validation of a semi-automated and unsupervised
+  method for femur segmentation from {CT}.
+\newblock {\em Scientific Reports}, 14(1):7403, March 2024.
+
+\bibitem{boaro_s265_2022}
+M.~P. Boaro, \textbf{Biondi, R.}, N.~Biondini, A.~Collado~Gimbert, E.~F. Jm,
+  V.~Pinto, N.~Romano, V.~Voi, G.~B. Ferrero, M.~Casale, M.~Cirillo,
+  G.~Palazzi, F.~Cavalleri, G.~L. Forni, G.~Reggiani, S.~Perrotta,
+  M.~Manu~Pereira, S.~Zazo, K.~Marias, M.~De~Montalembert, P.~Bartolucci,
+  E.~Van~Beers, F.~Alvarez, F.~Cremonesi, T.~Sanavia, P.~Fariselli,
+  G.~Castellani, R.~Manara, and R.~Colombatti.
+\newblock S265: {RADIOMICS} {AND} {ARTIFICIAL} {INTELLIGENCE} {FOR}
+  {IDENTIFICATION} {AND} {MONITORING} {OF} {SILENT} {CEREBRAL} {INFARCTS} {IN}
+  {SICKLE} {CELL} {DISEASE}: {FIRST} {ANALYSIS} {FROM} {THE} {GENOMED4ALL}
+  {EUROPEAN} {PROJECT}.
+\newblock {\em HemaSphere}, 6:166--167, June 2022.
+
+\bibitem{carlini_effectiveness_2023}
+Gianluca Carlini, Caterina Gaudiano, Rita Golfieri, Nico Curti, \textbf{Biondi,
+  Riccardo}, Lorenzo Bianchi, Riccardo Schiavina, Francesca Giunchi, Lorenzo
+  Faggioni, Enrico Giampieri, Alessandra Merlotti, Daniele Dall’Olio, Claudia
+  Sala, Sara Pandolfi, Daniel Remondini, Arianna Rustici, Luigi~Vincenzo
+  Pastore, Leonardo Scarpetti, Barbara Bortolani, Laura Cercenelli, Eugenio
+  Brunocilla, Emanuela Marcelli, Francesca Coppola, and Gastone Castellani.
+\newblock Effectiveness of {Radiomic} {ZOT} {Features} in the {Automated}
+  {Discrimination} of {Oncocytoma} from {Clear} {Cell} {Renal} {Cancer}.
+\newblock {\em Journal of Personalized Medicine}, 13(3):478, March 2023.
+
+\bibitem{collado_challenges_2023}
+Anna Collado, Maria~Paola Boaro, Sigrid Van Der~Veen, Amira Idrizovic, Bart~J.
+  Biemond, David Beneitez~Pastor, Ana Ortuño, Elena Cela, Anna Ruiz-Llobet,
+  Pablo Bartolucci, Marianne De~Montalembert, Gastone Castellani,
+  \textbf{Biondi, Riccardo}, Renzo Manara, Tiziana Sanavia, Piero Fariselli,
+  Petros Kountouris, Marina Kleanthous, Federico Alvarez, Santiago Zazo,
+  Raffaella Colombatti, Eduard~J. Van~Beers, and María Del~Mar Mañú-Pereira.
+\newblock Challenges and {Opportunities} of {Precision} {Medicine} in {Sickle}
+  {Cell} {Disease}: {Novel} {European} {Approach} by {GenoMed4All} {Consortium}
+  and {ERN}-{EuroBloodNet}.
+\newblock {\em HemaSphere}, 7(3):e844, March 2023.
+
+\bibitem{dalmonte_identification_2025}
+Sara Dalmonte, Maria~Adriana Cocozza, Dajana Cuicchi, Daniel Remondini, Lorenzo
+  Faggioni, Paolo Castellucci, Andrea Farolfi, Emilia Fortunati, Alberta
+  Cappelli, \textbf{Biondi, Riccardo}, Arrigo Cattabriga, Gilberto Poggioli,
+  Stefano Fanti, Gastone Castellani, Francesca Coppola, and Nico Curti.
+\newblock Identification of {PET}/{CT} radiomic signature for classification of
+  locally recurrent rectal cancer: {A} network-based feature selection
+  approach.
+\newblock {\em Heliyon}, 11(1):e41404, January 2025.
+
+\bibitem{gravante_artificial_2025}
+Giacomo Gravante, Alberto~Daniele Arosio, Nico Curti, \textbf{Biondi,
+  Riccardo}, Luigi Berardi, Alberto Gandolfi, Mario Turri-Zanoni, Paolo
+  Castelnuovo, Daniel Remondini, and Maurizio Bignami.
+\newblock Artificial intelligence and {MRI} in sinonasal tumors discrimination:
+  where do we stand?
+\newblock {\em European Archives of Oto-Rhino-Laryngology}, 282(3):1557--1566,
+  March 2025.
+
+\bibitem{peluso_artificial_2026}
+Sara Peluso, Vincenzo Lucidi, Maria~Chiara Di~Giovanni, Linda Bertoldo, Valeria
+  De~Gobbi, Alberto Aguzzi, Nico Curti, \textbf{Biondi, Riccardo}, Antonio
+  Raffone, Renato Seracchioli, Gastone Castellani, Cristina Mosconi, and Diego
+  Raimondo.
+\newblock Artificial {Intelligence}–enhanced {MRI} {Radiomics} for
+  {Discriminating} {Active} and {Fibrotic} {Lesions} to {Support} {Therapeutic}
+  {Decision} {Making} in {Deep} {Endometriosis}.
+\newblock {\em Journal of Minimally Invasive Gynecology}, page
+  S1553465025010258, January 2026.
+
+\bibitem{biondi_classification_2021}
+\textbf{Biondi, Riccardo}, Nico Curti, Francesca Coppola, Enrico Giampieri,
+  Giulio Vara, Michele Bartoletti, Arrigo Cattabriga, Maria~Adriana Cocozza,
+  Federica Ciccarese, Caterina De~Benedittis, Laura Cercenelli, Barbara
+  Bortolani, Emanuela Marcelli, Luisa Pierotti, Lidia Strigari, Pierluigi
+  Viale, Rita Golfieri, and Gastone Castellani.
+\newblock Classification {Performance} for {COVID} {Patient} {Prognosis} from
+  {Automatic} {AI} {Segmentation}—{A} {Single}-{Center} {Study}.
+\newblock {\em Applied Sciences}, 11(12):5438, June 2021.
+
+\bibitem{biondi_covid-19_2021}
+\textbf{Biondi, Riccardo}, Nico Curti, Enrico Giampieri, and Gastone
+  Castellani.
+\newblock {COVID}-19 {Lung} {Segmentation}.
+\newblock {\em Journal of Open Source Software}, 6(65):3447, September 2021.
+
+\bibitem{biondi_towards_2025}
+\textbf{Biondi, Riccardo}, Giacomo Gravante, Daniel Remondini, Sara Peluso,
+  Serena Cominetti, Francesco D’Amore, Maurizio Bignami, Alberto~Daniele
+  Arosio, and Nico Curti.
+\newblock Towards {Precision} {Medicine} in {Sinonasal} {Tumors}:
+  {Low}-{Dimensional} {Radiomic} {Signature} {Extraction} from {MRI}.
+\newblock {\em Diagnostics}, 15(13):1675, June 2025.
+
+\bibitem{biondi_machine_2023}
+\textbf{Biondi, Riccardo}, Matteo Renzulli, Rita Golfieri, Nico Curti, Gianluca
+  Carlini, Claudia Sala, Enrico Giampieri, Daniel Remondini, Giulio Vara,
+  Arrigo Cattabriga, Maria~Adriana Cocozza, Luigi~Vincenzo Pastore, Nicolò
+  Brandi, Antonino Palmeri, Leonardo Scarpetti, Gaia Tanzarella, Matteo Cescon,
+  Matteo Ravaioli, Gastone Castellani, and Francesca Coppola.
+\newblock Machine {Learning} {Pipeline} for the {Automated} {Prediction} of
+  {MicrovascularInvasion} in {HepatocellularCarcinomas}.
+\newblock {\em Applied Sciences}, 13(3):1371, January 2023.
+
+\end{thebibliography}
