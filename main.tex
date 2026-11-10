@@ -31,8 +31,10 @@
 \usepackage[utf8]{inputenc}
 \ifdefined\eng
   \usepackage[english]{babel}
+  \AtBeginDocument{\renewcommand{\refname}{Publication List}}
 \else
   \usepackage[italian]{babel}
+  \AtBeginDocument{\renewcommand{\refname}{Lista di Pubblicazioni}}
 \fi
 
 \moderncvstyle{classic} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
@@ -58,7 +60,7 @@
 %    \ifthenelse{\equal{#7}{}}{}{\phonesymbol~#7}}
 
 \title{Curriculum Vitae ac Studiorum}
-\address{}{Via Luigi Cherubini 19, Bologna(BO), 40141, Italia}
+\address{}{Via Enrico Fermi 45, Fossombrone (PU), 61034, Italia}
 \mobile{$+39 348 9876702$}
 \email{riccardo.biondi@proton.me}
 \social[github]{RiccardoBiondi}
@@ -86,11 +88,13 @@
   \input{./sections/programming_skills.tex}
 
   \input{./sections/freetime.tex}
-
   
   %\input{./sections/conferences.tex}
+
   \input{./sections/training.tex}
   
+  \input{./sections/scientific_metrics.tex}
+
   \input{./sections/publications.tex}
   
 
