@@ -60,14 +60,22 @@
 %    \ifthenelse{\equal{#7}{}}{}{\phonesymbol~#7}}
 
 \title{Curriculum Vitae ac Studiorum}
-\address{Via Enrico Fermi 45}{61034 Fossombrone (PU)}{Italia}
 \mobile{$+39 348 9876702$}
 \email{riccardo.biondi@proton.me}
 %\email{riccardo.biondi@pec.chimicifisici.it}
 \social[github]{RiccardoBiondi}
 \social[orcid]{0000-0003-0872-7098}
-\extrainfo{Updated: \today}
 
+
+% Here add the language depended entry
+
+\ifdefined\eng
+  \address{Via Enrico Fermi 45}{61034 Fossombrone (PU)}{Italy}
+  \extrainfo{Updated: \today}
+\else
+  \address{Via Enrico Fermi 45}{61034 Fossombrone (PU)}{Italia}
+  \extrainfo{Aggiornato il \today}
+\fi
 %----------------------------------------------------------------------------------------
 
 \begin{document}
@@ -95,7 +103,7 @@
   %\input{./sections/conferences.tex}
 
   \input{./sections/training.tex}
-  
+
   \input{./sections/scientific_metrics.tex}
 
   %\input{./sections/publications.tex}
