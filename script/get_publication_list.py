@@ -1,14 +1,25 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from dataclasses import dataclass, field
 from habanero import Crossref
 from scholarly import scholarly
 from abc import ABC, abstractmethod
 from typing import List, Tuple, Dict, Optional, IO, Any
 import requests
+import logging
 
-AUTHOR_NAME = "Riccardo"#'Riccardo'
-AUTHOR_SURNAME = "Biondi"#'Biondi'
+
+@dataclass(frozen=True)
+class ScriptConfig:
+    author_name: str = "Riccardo"
+    author_surname: str = "Biondi"
+    author_scholar_id: str = "EfruuU4AAAJ"
+    output_filename: str = "my_publication_list.bib",
+    #optional_fields: List[str] = field()
+
+AUTHOR_NAME = "Riccardo"
+AUTHOR_SURNAME = "Biondi"
 AUTHOR_SCHOLAR_ID = 'EfruuU4AAAAJ'
 OUTPUT_FILENAME = 'my_publication_list.bib'
 OPTIONAL_FIELDS = ['ISSN', 'publisher', 'page', 'volume', 'url']
@@ -30,36 +41,31 @@ def _get_valid_bibtex_entrance(entrance: Any):
     
     return entrance
 
+
 class UserGoogleScholarPublicationList:
 
-    def __init__(self, author_name: str, author_surname: str, author_id: Optional[str] = None) -> None:
+    def __init__(self, author_id) -> None:
         '''
         '''
 
-        self.author_name = author_name
-        self.author_surname = author_surname
         self.author_id = author_id
-        
         self.publication_list = {}
         
     def query(self) -> None:
         '''
         '''
-        print(' '.join((self.author_name, self.author_surname)))
-        #search_query = scholarly.search_author(' '.join((self.author_name, self.author_surname)))
-        search_query = scholarly.search_author(self.author_surname)
-        print(search_query)
-        author = next(search_query)
 
-        if self.author_id is not None:
-            count = 0 # counter to avoid infinite loop
-            while (self.author_id != author['scholar_id']) & (count < 100):
-                count = count + 1
-                author = next(search_query)
-        
+        logging.info("Start searching author by Scholar ID")
+
+        author = scholarly.search_author_id(self.author_id)
+
+        # fill the author profile and retrieve the pubblications        
         author = scholarly.fill(author)
+
+        logging.info("Retrieving Publication List")
         
         self.publication_list =  [pub['bib']['title'] for pub in author['publications']]
+
 
 class FilterBibTexListBy(ABC):
 
@@ -85,13 +91,16 @@ class FilterBibTexListBy(ABC):
 
 class FilterBibTexListByAythor(FilterBibTexListBy):
     
-    def __init__(self, author_name: Tuple[str]) -> None:
+    def __init__(self, author_name: str, author_surname: str) -> None:
         '''
         '''
 
         self.bibtex_list = []
         self.author_name = author_name
+        self.author_surname = author_surname
         self.valid_bibtex_list = []
+        self.added_dois = []
+
 
     def setBibTexListToParse(self, bibtex_list: List[Dict[str, str]]) -> None:
 
@@ -105,11 +114,23 @@ class FilterBibTexListByAythor(FilterBibTexListBy):
     def _isPublicationValid(self, publication_bibtex: Dict[str, str]) -> bool:
         '''
         '''
+        doi = publication_bibtex['DOI']
+
+        if doi in self.added_dois:
+            return False 
+
         try:
             publication_authors = ' and '.join([', '.join([i['family'],
                                          i['given']])
                               for i in publication_bibtex['author']])
-            return (self.author_name[1] in publication_authors) & (self.author_name[0] in publication_authors)
+
+            str_1 = ", ".join([self.author_surname, self.author_name])
+            str_2 = ", ".join([self.author_surname, self.author_name[0]]) # Since some authorship could be reported as Biondi, R. instead of Biondi, Riccardo
+
+            self.added_dois.append(doi)
+
+            return (str_1 in publication_authors) | (str_2 in publication_authors)
+
         except KeyError:
             # bacause 'family' and 'given' are mandatory fields.
             # If they do not exists, then the publication bibtex is not valid
@@ -120,17 +141,28 @@ class WriteBibtexFromDict:
     '''
     '''
 
-    def __init__(self, bibtex_dict: Dict[str, str], optional_fields: List[str] = []) -> None:
+    def __init__(self, bibtex_dict: Dict[str, str], optional_fields: List[str] = [], name_to_bold: List[str] = []) -> None:
 
         self.bibtex_dict = bibtex_dict
         self.optional_fields = optional_fields
+        self.name_to_bold = name_to_bold
+
+
+    def _make_bold(self, text: str) -> str:
+        
+
+        if text in self.name_to_bold:
+
+            return r"\textbf{" + text + r"}"
+
+        return text
 
     def _make_mandatory_fields_string(self) -> str:
         '''
         '''
 
-        authors = ' and '.join([', '.join([i['family'],
-                                         i['given']])
+        authors = ' and '.join([self._make_bold(', '.join([i['family'],
+                                         i['given']]))
                               for i in self.bibtex_dict['author']])
         
         title = self.bibtex_dict['title'][0]
@@ -194,30 +226,30 @@ def main() -> None:
 
 
     # Retrieve the author specific publication titles from google scholar
-    me = UserGoogleScholarPublicationList(AUTHOR_NAME, AUTHOR_SURNAME, AUTHOR_SCHOLAR_ID)
+    me = UserGoogleScholarPublicationList(AUTHOR_SCHOLAR_ID)
     _ = me.query()
 
-    print(f'Found {len(me.publication_list)} publications for {AUTHOR_NAME} {AUTHOR_SURNAME}')
+    logging.info(f'Found {len(me.publication_list)} publications for {AUTHOR_NAME} {AUTHOR_SURNAME}')
 
     # Instantiate some helper class to filter the publications bibtex
-    bibtex_filter = FilterBibTexListByAythor((AUTHOR_NAME, AUTHOR_SURNAME))
+    bibtex_filter = FilterBibTexListByAythor(AUTHOR_NAME, AUTHOR_SURNAME)
 
     # Now, for each publication title
     with open(OUTPUT_FILENAME, 'w') as fp:
 
         for publication_title in me.publication_list:
-            print(f"Filtering {publication_title}")
+            logging.info(f"Filtering {publication_title}")
             publication_bibtex_list = get_bibtex_list_from_publication_title(publication_title)
             _ = bibtex_filter.setBibTexListToParse(publication_bibtex_list)
             _ = bibtex_filter.filter()
         
             if len(bibtex_filter.valid_bibtex_list) > 0:
             
-                writer = WriteBibtexFromDict(bibtex_filter.valid_bibtex_list[0], OPTIONAL_FIELDS)
+                writer = WriteBibtexFromDict(bibtex_filter.valid_bibtex_list[0], OPTIONAL_FIELDS, ["Biondi, Riccardo", "Biondi, R.", "Biondi, R"])
                 _ = writer.write(fp)
 
             else:
-                print(f"No valid bibtex found")
+                logging.info(f"No valid bibtex found")
 
 
 
